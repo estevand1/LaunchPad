@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARC Framework — Website Copy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B3A5C;
+    --blue: #2E6DA4;
+    --sky: #D6E8F7;
+    --green: #2A7A4B;
+    --sage: #D6F0E0;
+    --amber: #C85D1A;
+    --cream: #FAF8F4;
+    --warm-white: #FFFFFF;
+    --ink: #1A1A1A;
+    --muted: #5A5A5A;
+    --rule: #E2DDD8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── HEADER / META ── */
+  .doc-header {
+    background: var(--navy);
+    padding: 28px 0;
+  }
+  .doc-header .page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .doc-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .doc-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: white;
+  }
+  .doc-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 72px 0 0;
+  }
+  .section:last-child { padding-bottom: 100px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+
+  h1.display {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(38px, 5vw, 54px);
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  h1.display em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  h2.section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--navy);
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+
+  h3.sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    margin-top: 32px;
+  }
+
+  p { margin-bottom: 18px; color: var(--muted); }
+  p.lead {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0 0;
+  }
+
+  /* ── HERO BLOCK ── */
+  .hero-block {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 64px 56px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+  .hero-block::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(46,109,164,0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-block .section-label { color: rgba(255,255,255,0.5); }
+  .hero-block h1.display { color: white; }
+  .hero-block h1.display em { color: #7BB8E8; }
+  .hero-block p.lead { color: rgba(255,255,255,0.8); }
+  .hero-note {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-style: italic;
+  }
+
+  /* ── COPY BLOCKS ── */
+  .copy-block {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 40px 44px;
+    margin-top: 28px;
+    position: relative;
+  }
+  .copy-block .copy-tag {
+    position: absolute;
+    top: -12px; left: 28px;
+    background: var(--blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .copy-block.alt {
+    background: var(--sky);
+    border-color: #B8D4EE;
+  }
+  .copy-block.alt .copy-tag { background: var(--navy); }
+  .copy-block.green-tint {
+    background: var(--sage);
+    border-color: #AADCC0;
+  }
+  .copy-block.green-tint .copy-tag { background: var(--green); }
+  .copy-block.warm {
+    background: #FDF3EE;
+    border-color: #F0CCBB;
+  }
+  .copy-block.warm .copy-tag { background: var(--amber); }
+
+  .copy-block p { margin-bottom: 14px; }
+  .copy-block p:last-child { margin-bottom: 0; }
+  .copy-block p.lead { font-size: 18px; }
+
+  /* ── PHASE CARDS ── */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .phase-card {
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .phase-card.a { background: var(--sky); border: 1px solid #B8D4EE; }
+  .phase-card.r { background: var(--sage); border: 1px solid #AADCC0; }
+  .phase-card.c { background: #EAE0F7; border: 1px solid #C5AEED; }
+  .phase-letter {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .phase-card.a .phase-letter { color: var(--blue); }
+  .phase-card.r .phase-letter { color: var(--green); }
+  .phase-card.c .phase-letter { color: #5B3A8C; }
+  .phase-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .phase-card.a .phase-name { color: var(--blue); }
+  .phase-card.r .phase-name { color: var(--green); }
+  .phase-card.c .phase-name { color: #5B3A8C; }
+  .phase-weeks {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .phase-desc {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* ── OUTCOME LIST ── */
+  .outcome-list {
+    list-style: none;
+    margin-top: 24px;
+  }
+  .outcome-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+  }
+  .outcome-list li:last-child { border-bottom: none; }
+  .outcome-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--sage);
+    border: 1px solid #AADCC0;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .outcome-text strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .outcome-text span {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── QUOTE ── */
+  .pull-quote {
+    border-left: 3px solid var(--blue);
+    padding: 4px 0 4px 28px;
+    margin: 32px 0;
+  }
+  .pull-quote p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--navy);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ── FOR WHO TABLE ── */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .who-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 26px;
+  }
+  .who-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--navy);
+  }
+  .who-card ul { list-style: none; }
+  .who-card ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+  .who-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 12px;
+  }
+  .who-card.green-card ul li::before { color: var(--green); }
+
+  /* ── DELIVERABLES ── */
+  .deliverable-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .deliverable-item {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .d-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--blue);
+    opacity: 0.4;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .d-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--rule); }
+  .faq-q {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .faq-a {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 56px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  .cta-block h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 34px;
+    color: white;
+    margin-bottom: 14px;
+  }
+  .cta-block p {
+    color: rgba(255,255,255,0.65);
+    max-width: 440px;
+    margin: 0 auto 32px;
+    font-size: 16px;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary {
+    background: white;
+    color: var(--navy);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  /* ── USAGE NOTE ── */
+  .usage-strip {
+    background: #FFFBF5;
+    border: 1px solid #F0E4CC;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 48px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .usage-strip-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .usage-strip p {
+    font-size: 13px;
+    color: #7A6244;
+    margin: 0;
+    line-height: 1.6;
+  }
+  .usage-strip strong { color: #5A4020; }
+
+  @media (max-width: 640px) {
+    .phase-grid, .who-grid, .deliverable-grid { grid-template-columns: 1fr; }
+    .hero-block { padding: 40px 28px; }
+    .copy-block { padding: 32px 24px; }
+    .doc-header .page { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── DOCUMENT HEADER ── -->
+<div class="doc-header">
+  <div class="page">
+    <div>
+      <div class="doc-label">Website Copy</div>
+      <div class="doc-title">ARC Framework™</div>
+    </div>
+    <div class="doc-badge">Replace [Business Name] throughout</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ════════════════════════════════════
+       SECTION 1: HERO
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 1 — Hero / Above the Fold</div>
+
+    <div class="hero-block">
+      <div class="section-label">For high school seniors + their parents</div>
+      <h1 class="display">Your senior has a diploma.<br>Do they have <em>a plan?</em></h1>
+      <p class="lead">The ARC Framework gives graduating students clarity on what's next, a real income plan, and the practical tools to follow through — in 6 weeks.</p>
+      <p class="hero-note">No pressure to pick college. No vague "follow your passion" advice. Just a structured process that ends with a plan they can actually use.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 2: THE PROBLEM
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 2 — The Problem (Speaks to Both Audiences)</div>
+
+    <div class="copy-block">
+      <div class="copy-tag">For Parents</div>
+      <h2 class="section-title">You've done everything right.<br>So why does graduation feel uncertain?</h2>
+      <p class="lead">Your kid is smart. You've supported them through everything. And yet — when someone asks what they're doing after graduation, the answer is vague at best and panicked at worst.</p>
+      <p>It's not that they don't care. It's that no one has ever walked them through the actual mechanics of building a life. They've been prepared for standardized tests, not for real decisions about money, work, and independence.</p>
+      <p>The gap isn't motivation. It's structure. And that's exactly what the ARC Framework provides.</p>
+    </div>
+
+    <div class="copy-block alt">
+      <div class="copy-tag">For Students</div>
+      <h2 class="section-title">You're not lost because something's wrong with you.</h2>
+      <p class="lead">You're lost because nobody handed you a real roadmap. Not for this part.</p>
+      <p>College, trade school, getting a job, starting something — these are all real options. But nobody has sat down with you to evaluate them based on <em>your</em> work style, your actual goals, and what things genuinely cost and pay.</p>
+      <p>That's the whole point of ARC. Six weeks. A process that takes you seriously. A plan you build yourself, with real guidance, that you can actually stand behind.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 3: THE PROGRAM
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 3 — What the Program Is</div>
+
+    <h2 class="section-title">The ARC Framework™</h2>
+    <p class="lead">A 6-week, structured coaching program for high school seniors — built around three phases that move from confusion to confidence to a concrete plan.</p>
+
+    <div class="phase-grid">
+      <div class="phase-card a">
+        <div class="phase-letter">A</div>
+        <div class="phase-name">Awareness</div>
+        <div class="phase-weeks">Weeks 1–2</div>
+        <p class="phase-desc">Identify your work style, evaluate every realistic path with real data, and land on a primary direction — with a backup plan already in place.</p>
+      </div>
+      <div class="phase-card r">
+        <div class="phase-letter">R</div>
+        <div class="phase-name">Revenue Plan</div>
+        <div class="phase-weeks">Weeks 3–4</div>
+        <p class="phase-desc">Map your entry point, identify the skills you need, and build a 12-month income roadmap with honest numbers — not optimistic guesses.</p>
+      </div>
+      <div class="phase-card c">
+        <div class="phase-letter">C</div>
+        <div class="phase-name">Control</div>
+        <div class="phase-weeks">Weeks 5–6</div>
+        <p class="phase-desc">Build the weekly habits, personal money system, and decision-making toolkit that keep you on track when life doesn't go exactly as planned.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>"I work with high school seniors who feel stuck about what's next. In 6 weeks, we help them gain clarity, build a practical income plan, and create actionable steps to move confidently into post-graduation life."</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 4: OUTCOMES
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 4 — Outcomes / What They Walk Away With</div>
+
+    <h2 class="section-title">What your student walks away with</h2>
+    <p>Not a certificate. Not a folder of generic handouts. Actual documents they built for their own life — ready to use the week after graduation.</p>
+
+    <ul class="outcome-list">
+      <li>
+        <div class="outcome-icon">🗺️</div>
+        <div class="outcome-text">
+          <strong>A Personal Path Summary</strong>
+          <span>A clear, evidence-based direction — primary and backup — evaluated against real income potential, cost, time to earning, and personal fit.</span>
+        </div>
+      </li>
+      <li>
+        <div class="outcome-icon">📈</div>
+        <div class="outcome-text">
+          <strong>A 12-Month Income Roadmap</strong>
+          <span>A realistic month-by-month picture of what they'll be doing and earning in their first year — with clear next steps, not wishful thinking.</span>
+        </div>
+      </li>
+      <li>
+        <div class="outcome-icon">💰</div>
+        <div class="outcome-text">
+          <strong>A Personal Money System</strong>
+          <span>A working budget, a set of personal money rules, and a simple tracking habit — built around their actual income expectations, not hypothetical numbers.</span>
+        </div>
+      </li>
+      <li>
+        <div class="outcome-icon">📋</div>
+        <div class="outcome-text">
+          <strong>An Action Blueprint</strong>
+          <span>One complete document: path, entry point, first 30 days, skills to build, weekly habits, and a decision framework for when things change. Everything in one place.</span>
+        </div>
+      </li>
+      <li>
+        <div class="outcome-icon">🧭</div>
+        <div class="outcome-text">
+          <strong>A Decision-Making Framework</strong>
+          <span>A repeatable process for pivoting when life doesn't go as planned — so they're not starting over, they're adapting with confidence.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 5: WHO IT'S FOR
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 5 — Who This Is For</div>
+
+    <h2 class="section-title">Who this program is built for</h2>
+
+    <div class="who-grid">
+      <div class="who-card">
+        <h4>This is for your student if...</h4>
+        <ul>
+          <li>They feel stuck, overwhelmed, or like everyone else has a plan except them</li>
+          <li>They're not sure college is right for them — but they don't know what else looks like</li>
+          <li>They have a general direction but no idea how to actually start</li>
+          <li>They avoid the "what are you doing after graduation?" question</li>
+          <li>They're capable but need structure to move forward</li>
+        </ul>
+      </div>
+      <div class="who-card green-card">
+        <h4>This is for you as a parent if...</h4>
+        <ul>
+          <li>You want your kid to have a plan — and you want it to be theirs, not yours</li>
+          <li>You're tired of conversations that go nowhere and tension that's building</li>
+          <li>You want them to understand money before they're managing it alone</li>
+          <li>You're open to any path — college, trade, work — as long as there's a real plan behind it</li>
+          <li>You'd like an outside voice in the room (it often lands differently than when you say it)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copy-block warm" style="margin-top: 20px;">
+      <div class="copy-tag">Honest Note</div>
+      <p>This program works best for students who are willing to engage — even if reluctantly at first. If your student is deeply resistant to any kind of planning conversation, reach out before enrolling. We'll tell you honestly whether ARC is the right fit right now, or whether a different starting point makes more sense.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 6: WHAT MAKES IT DIFFERENT
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 6 — Differentiation / Why This, Why Now</div>
+
+    <h2 class="section-title">What makes this different from career counseling or college prep</h2>
+
+    <div class="copy-block">
+      <div class="copy-tag">The Difference</div>
+      <p class="lead">Most career guidance for teenagers is either too vague to act on, or narrowly focused on college as the only option.</p>
+      <p>ARC treats college as one of five legitimate paths — alongside trade programs, direct workforce entry, community college, and entrepreneurship. No path gets a hidden endorsement. Each one gets evaluated on the same criteria: income potential, cost, time to earning, and personal fit.</p>
+      <p>Students don't just leave with a direction. They leave with the documents, habits, and decision-making skills to navigate what comes after — including when the plan changes. Because it will change. That's built into the program.</p>
+      <p><strong>Everything is built around real numbers.</strong> Real entry-level wages. Real training costs. Real budget math based on what they'll actually earn in Month 1 — not a future salary someday. We've found that when students see real numbers, the planning stops feeling abstract and starts feeling urgent in the right way.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 7: STRUCTURE / FORMAT
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 7 — Program Structure and Format</div>
+
+    <h2 class="section-title">How the program works</h2>
+
+    <h3 class="sub">Format</h3>
+    <p>ARC runs over 6 weeks with two sessions per week (12 sessions total). Sessions are 60–75 minutes each and can be run one-on-one or in a small group of 3–6 students. Both formats are effective — the small group option adds the benefit of hearing how peers navigate the same decisions.</p>
+
+    <h3 class="sub">What each session looks like</h3>
+    <p>Every session has a specific goal, a structured agenda, and a worksheet or exercise the student completes in real time. There's no homework load — the work happens in the sessions. What students take home is the output of the session itself: a filled-in worksheet, a completed roadmap section, a draft of their budget.</p>
+
+    <h3 class="sub">The binder</h3>
+    <p>Every student builds a physical ARC binder over the course of the program. By Session 12, it contains every deliverable from every session — a complete record of their work that doubles as a reference document they can return to. It's tangible in a way a Google Doc isn't.</p>
+
+    <h3 class="sub">Session 12: Graduation</h3>
+    <p>The final session is a presentation and commitment ceremony. Students share their Action Blueprint out loud — to the group, and optionally to a parent or family member — and sign a personal commitment contract. It's a low-pressure but meaningful moment of accountability that makes the plan feel real, not theoretical.</p>
+
+    <div class="deliverable-grid" style="margin-top: 32px;">
+      <div class="deliverable-item"><div class="d-num">12</div><div class="d-text">Structured sessions over 6 weeks</div></div>
+      <div class="deliverable-item"><div class="d-num">5</div><div class="d-text">Major deliverables, built in-session</div></div>
+      <div class="deliverable-item"><div class="d-num">1:1</div><div class="d-text">or small group (3–6 students)</div></div>
+      <div class="deliverable-item"><div class="d-num">17</div><div class="d-text">Worksheets completed and kept</div></div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 8: FAQ
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 8 — FAQ</div>
+
+    <h2 class="section-title">Common questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Does this push students toward college?</div>
+      <p class="faq-a">No. College is one of five paths we evaluate — alongside trade programs, direct workforce entry, community college, and entrepreneurship. Every path is taken seriously. The goal is to find the right fit for each student, not to funnel everyone in the same direction.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if my student doesn't know what they want at all?</div>
+      <p class="faq-a">That's exactly who this is designed for. The program starts by helping students understand how they work best — before asking them to evaluate any options. Most students who "don't know what they want" actually have more self-knowledge than they realize. The first two weeks surface it.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if the plan changes after the program ends?</div>
+      <p class="faq-a">Plans always change — that's built into the program. Session 10 specifically teaches a decision-making framework for navigating pivots confidently. Students leave knowing how to adapt, not just what to do under ideal circumstances.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is this therapy or counseling?</div>
+      <p class="faq-a">No. ARC is a structured coaching and planning program. It's practical and forward-looking. If a student is navigating significant mental health challenges or family instability, we'll have an honest conversation about whether ARC is the right fit right now and what might serve them better.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can parents be involved?</div>
+      <p class="faq-a">Parents are welcome at the final session (Session 12) where students present their Action Blueprint. Outside of that, the sessions belong to the student — which is intentional. Students engage more honestly and take more ownership when the sessions are their space. You'll see the results at graduation.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">When should we enroll — senior year, summer before, or after graduation?</div>
+      <p class="faq-a">The ideal window is second semester senior year or the summer before or after graduation. Early enough that the plan informs real decisions. Late enough that it doesn't compete with the chaos of college applications. Reach out and we'll help you find the right timing.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ════════════════════════════════════
+       SECTION 9: CTA
+  ════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">Page Section 9 — Call to Action</div>
+
+    <div class="cta-block">
+      <h2>Ready to get your senior unstuck?</h2>
+      <p>Start with a free 20-minute conversation. We'll figure out together whether ARC is the right fit — and what the best next step looks like for your student specifically.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary">Book a Free Conversation</a>
+        <a href="#" class="btn btn-secondary">Learn More About the Program</a>
+      </div>
+    </div>
+
+    <div class="copy-block green-tint" style="margin-top: 24px;">
+      <div class="copy-tag">Secondary CTA Option</div>
+      <p><strong>Not sure yet?</strong> Download the ARC Framework overview — a one-page summary of the program, what's covered, and what your student will walk away with. No email required.</p>
+    </div>
+  </div>
+
+  <!-- ── USAGE NOTE ── -->
+  <div class="usage-strip">
+    <div class="usage-strip-icon">📝</div>
+    <p><strong>How to use this copy:</strong> Each section is labeled by page placement. You can use them in order as a single landing page, or pull individual sections for separate pages (About, Program, FAQ). Replace <strong>[Business Name]</strong> wherever your brand name belongs. The pull quote in Section 3 is your core positioning statement — consider using it in your bio, email footer, and social profiles as well.</p>
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>
