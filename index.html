@@ -730,26 +730,88 @@
 
   <hr class="rule">
 
-  <!-- ════════════════════════════════════
-       SECTION 9: CTA
-  ════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-label">Page Section 9 — Call to Action</div>
+<!-- ════════════════════════════════════
+     SECTION 9: CTA with popup form
+════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Page Section 9 — Call to Action</div>
 
-    <div class="cta-block">
-      <h2>Ready to get your senior unstuck?</h2>
-      <p>Start with a free 20-minute conversation. We'll figure out together whether ARC is the right fit — and what the best next step looks like for your student specifically.</p>
-      <div class="cta-buttons">
-        <a href="#" class="btn btn-primary">Book a Free Conversation</a>
-        <a href="#" class="btn btn-secondary">Learn More About the Program</a>
-      </div>
-    </div>
-
-    <div class="copy-block green-tint" style="margin-top: 24px;">
-      <div class="copy-tag">Secondary CTA Option</div>
-      <p><strong>Not sure yet?</strong> Download the ARC Framework overview — a one-page summary of the program, what's covered, and what your student will walk away with. No email required.</p>
+  <div class="cta-block">
+    <h2>Ready to get your senior unstuck?</h2>
+    <p>Start with a free 20-minute conversation. We'll figure out together whether ARC is the right fit — and what the best next step looks like for your student specifically.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary" id="openFormBtn">Book a Free Conversation</a>
+      <a href="#" class="btn btn-secondary" id="learnMoreBtn">Learn More About the Program</a>
     </div>
   </div>
+
+  <div class="copy-block green-tint" style="margin-top: 24px;">
+    <div class="copy-tag">Secondary CTA Option</div>
+    <p><strong>Not sure yet?</strong> Download the ARC Framework overview — a one-page summary of the program, what's covered, and what your student will walk away with. No email required.</p>
+  </div>
+</div>
+
+<!-- POPUP FORM MODAL -->
+<div id="formModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:9999;">
+  <div style="background:white; padding:40px; border-radius:12px; max-width:500px; width:90%; position:relative;">
+    <h2>Book a Free Conversation</h2>
+    <p>Fill out the form below and we’ll get back to you shortly.</p>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required style="width:100%; margin-bottom:12px; padding:8px;">
+      <input type="email" name="email" placeholder="Your Email" required style="width:100%; margin-bottom:12px; padding:8px;">
+      <textarea name="message" placeholder="Your Message" required style="width:100%; margin-bottom:12px; padding:8px;"></textarea>
+      <button type="submit" style="padding:10px 20px; margin-right:10px;">Send Message</button>
+      <button type="button" id="closeModal" style="padding:10px 20px;">Cancel</button>
+    </form>
+    <p id="formStatus" style="margin-top:12px; font-size:14px;"></p>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('openFormBtn');
+  const modal = document.getElementById('formModal');
+  const closeBtn = document.getElementById('closeModal');
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  // Open modal
+  openBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    modal.style.display = 'flex';
+  });
+
+  // Close modal
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    status.textContent = '';
+    form.reset();
+  });
+
+  // Submit form
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Use Formspree (free, no backend needed)
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(response => {
+      if (response.ok) {
+        status.style.color = 'green';
+        status.textContent = 'Message sent! We will contact you soon.';
+        form.reset();
+      } else {
+        status.style.color = 'red';
+        status.textContent = 'Oops! Something went wrong. Try again later.';
+      }
+    }).catch(() => {
+      status.style.color = 'red';
+      status.textContent = 'Network error. Try again later.';
+    });
+  });
+</script>
+
 
   <!-- ── USAGE NOTE ── -->
   <div class="usage-strip">
